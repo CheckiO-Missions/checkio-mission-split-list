@@ -1,7 +1,7 @@
 <!-- Describe task in general -->
 
 <p>
-    Sum two passed ints
+    A given array you should split by two arrays. If it has odd amount of elements, then the first array should have more elements. If it has no elements, then two empty arrays should be returner
 </p>
 
 <p style="text-align: center;">
@@ -10,11 +10,11 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments. Both are ints.
+    <strong>Input: </strong> {% if interpreter.slug == "js-node" %}List{% else %}Array{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <strong>Output: </strong> {% if interpreter.slug == "js-node" %}List of two lists{% else %}Array or two arrays{% endif %}.
 </p>
 
 
@@ -25,28 +25,12 @@
     </p>
 
 {% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">sumTwo(2, 3) == 5
-sumTwo(5, 7) == 12
+<pre class="brush: javascript">splitList([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
+splitList([1, 2, 3]) == [[1, 2], [3]]
 </pre>
 {% else %}
-<pre class="brush: python">sum_two(2, 3) == 5
-sum_two(5, 7) == 12
+<pre class="brush: python">split_list([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
+split_list([1, 2, 3]) == [[1, 2], [3]]
 </pre>
 {% endif %}
 </div>
-
-
-<!-- Here you can explain how it can be used in development -->
-<!-- The section is optional -->
-<p class="for_info_only">
-
-    <strong>How it’s used: </strong>
-    <i>(math is used everywhere)</i>
-</p>
-
-<!-- Here you can explain some constraints for input-->
-<!-- The section is optional -->
-<p>
-    <strong>Precondition:</strong>
-    <i>both given ints should be between -1000 and 1000</i>
-</p>

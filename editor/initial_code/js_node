@@ -1,19 +1,23 @@
 "use strict";
 
-function sumTwo(a, b) {
-    // sums two passed arguments
-
+function splitList(a) {
     // your code here
-    return 0;
+    return undefined;
 }
 
 var assert = require('assert');
+
 if (!global.is_checking) {
     console.log('Example:');
-    console.log(sumTwo(3, 2));
+    console.log(splitList([1, 2, 3, 4, 5, 6]));
 
-    // These "asserts" are used for self-checking and not for an auto-testing
-    assert.equal(sumTwo(3, 2), 5);
-    assert.equal(sumTwo(5, 7), 12);
+    // These "asserts" are used for self-checking
+    assert.deepEqual(splitList([1, 2, 3, 4, 5, 6]), [[1, 2, 3], [4, 5, 6]]);
+    assert.deepEqual(splitList([1, 2, 3]), [[1, 2], [3]]);
+    assert.deepEqual(splitList([1, 2, 3, 4, 5]), [[1, 2, 3], [4, 5]]);
+    assert.deepEqual(splitList([1]), [[1], []]);
+    assert.deepEqual(splitList([]), [[], []]);
+
     console.log("Coding complete? Click 'Check' to earn cool rewards!");
 }
+    
