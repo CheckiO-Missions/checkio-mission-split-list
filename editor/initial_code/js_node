@@ -1,6 +1,6 @@
 "use strict";
 
-function splitList(a) {
+function splitList(items) {
     // your code here
     return undefined;
 }

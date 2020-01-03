@@ -1,6 +1,6 @@
-def split_list(a):
+def split_list(items: list) -> list:
     # your code here
-    return None
+    return [items]
 
 
 if __name__ == '__main__':
