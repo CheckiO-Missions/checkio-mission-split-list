@@ -27,6 +27,9 @@
 {% if interpreter.slug == "js-node" %}
 <pre class="brush: javascript">splitList([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
 splitList([1, 2, 3]) == [[1, 2], [3]]
+splitList([1, 2, 3, 4, 5]) == [[1, 2, 3], [4, 5]]
+splitList([1]) == [[1], []]
+splitList([]) == [[], []]
 </pre>
 {% else %}
 <pre class="brush: python">split_list([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
