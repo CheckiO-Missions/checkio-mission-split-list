@@ -1,6 +1,6 @@
 import assert from "assert";
 
-function splitList(values: number[]) {
+function splitList(values: number[]):number[][] {
     // your code here
     return [];
 }
