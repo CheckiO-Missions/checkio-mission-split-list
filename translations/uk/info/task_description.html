@@ -1,0 +1,39 @@
+<!-- Describe task in general -->
+
+<p>
+   Ви повинні розділити даний масив на два масиви. Якщо він має непарну кількість елементів, то перший масив повинен мати більше елементів. Якщо в ньому немає елементів, слід повернути два порожні масиви.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Вхідні дані: </strong> {% if interpreter.slug == "js-node" %}Список{% else %}Масив{% endif %}.
+</p>
+
+<p>
+    <strong>Вихідні дані: </strong> {% if interpreter.slug == "js-node" %}Список з двох списків{% else %}Масив з двох масивів{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Приклад:</strong>
+    </p>
+
+{% if interpreter.slug == "js-node" %}
+<pre class="brush: javascript">splitList([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
+splitList([1, 2, 3]) == [[1, 2], [3]]
+splitList([1, 2, 3, 4, 5]) == [[1, 2, 3], [4, 5]]
+splitList([1]) == [[1], []]
+splitList([]) == [[], []]
+</pre>
+{% else %}
+<pre class="brush: python">split_list([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
+split_list([1, 2, 3]) == [[1, 2], [3]]
+</pre>
+{% endif %}
+</div>
