@@ -5,7 +5,7 @@
     two {% if is_js %}Arrays inside an Array{% else %}lists inside an Iterable{% endif %}.
     If input sequence has an odd amount of elements, then the first {% if is_js %}Array{% else %}list{% endif %}
     inside result {% if is_js %}Array{% else %}Iterable{% endif %} should have more elements.
-    If input sequence has no elements, then two empty {% if is_js %}Arrays{% else %}lists{% endif %} inside result {% if is_js %}Array{% else %}Iterable{% endif %}should be returned.
+    If input sequence has no elements, then two empty {% if is_js %}Arrays{% else %}lists{% endif %} inside result {% if is_js %}Array{% else %}Iterable{% endif %} should be returned.
 </p>
 
 <p style="text-align: center;">
@@ -14,7 +14,7 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input:</strong> {% is_js %}An Array{% else %}A list{% endif %}.
+    <strong>Input:</strong> {% if is_js %}An Array{% else %}A list{% endif %}.
 </p>
 
 <p>

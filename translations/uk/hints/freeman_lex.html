@@ -1,41 +1,40 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        I have no idea how to start solving this mission.
+        Я уявлення не маю, як розв'язувати цю місію.
     </div>
     <div class="answer">
-        This mission is about slicing the list. Find the correct index and create
-        two lists using slicing.
+        Знайди правильний індекс і створи два списки використовуючи зрізування. 
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        So, what should I start from?
+        То з чого мені почати?
     </div>
     <div class="answer">
-        After reading about <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">slicing</a>,
-        you may already write the return statement (if you return list as well),
-        where "ind" is the index of element of the input list, which would the
-        first element of the second list inside output Iterable:    
+        Як прочитаєш про <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">зрізування</a>,
+        можеш відразу написати вираз return, де "ind" це індекс елемента у вхідному списку,
+        який буде першим елементом другого списку всередині вихідного ітерованого об'єкта:    
         <br />
         <br />
         <pre class="brush: python">
-return [items[:ind], items[ind:]]        
+return [items[:ind], items[ind:]] # якщо ти повертаєш список        
         </pre>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        I see, but how to find out that index?
+        Зрозуміло, але як знайти цей індекс?
     </div>
     <div class="answer">
-        For example, let's take a list with even number of elements, where elements
-        are the same as indexes for convenience (indexes start from 0 in Python) - [0, 1, 2, 3, 4, 5].
-        So, the element(and index) you need is 3. If you take a closest smaller
-        list with odd number of element [0, 1, 2, 3, 4] you discover, that you need
-        the same element (and index) 3. So, for the list with odd number of elements
-        you need the same index as for the next one with even numbers. This result of
-        calculation would be achieved by such expression:
+        Наприклад, давай візьмемо список із парною кількістю елементів, де для зручності
+        елементи такі ж як індекси (в Python індекси починаються з 0) - [0, 1, 2, 3, 4, 5].
+        Отже, елемент (і індекс), який тобі потрібен - це 3.
+        Якщо ти візьмеш найближчий менший список із непарною кількістю елементів
+        [0, 1, 2, 3, 4], то з'ясуєш, що тобі так само потрібен елемент (і індекс) 3.
+        Отже, для списку із непарною кількістю елементів, тобі потрібен той самий індекс,
+        як і для наступного списку із парною кількістю елементів. Такий результат
+        розрахунків буде досягнутий виразом:
         <br />
         <br />
         <pre class="brush: python">
@@ -45,14 +44,17 @@ ind = (len(items) + 1) // 2
 </div>
 <div class="question-answer">
     <div class="question">
-        So, how my final solution should look like?
+        То як має виглядати моє остаточне рішення?
     </div>
     <div class="answer">
-        You just need to join previous hints together and wrap you code inside
-        function expressions (type hints are recommended):
+        Тобі лише потрібно поєднати попередні підказки разом і обгорнути твій код
+        у вираз функції (підказки типу рекомендовані до використання):
         <br />
         <br />
         <pre class="brush: python">
+from typing import Any, Iterable
+
+
 def split_list(items: list[Any]) -> Iterable[list[Any]]:
 
     ind = (len(items) + 1) // 2
@@ -63,16 +65,17 @@ def split_list(items: list[Any]) -> Iterable[list[Any]]:
 </div>
 <div class="question-answer">
     <div class="question">
-        Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!
+        Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!
     </div>
     <div class="answer">
-        Sure, grab it!<br />
-        With using math module (round up with ceiling) you don't need adding 1 to
-        the length of sequence. 
+        Звісно, тримай!<br />
+        З використанням модуля math (округлення вгору з ceiling) ти не потребуєш
+        додавання 1 до довжини списку.
         <br />
         <br />
         <pre class="brush: python">
+from typing import Any, Iterable
 import math
 
 
@@ -82,28 +85,30 @@ def split_list(items: list[Any]) -> Iterable[list[Any]]:
 
     return [items[:half], items[half:]]
         </pre>
-        This solution uses interesting list method <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">pop()</a>.
-        It removes and return value from list with specific index. So you remove
-        needed number of elements, insert them into new list. And you include the
-        input list as the second output list since its already without elements, 
-        included in the first list!
+        Цей розв'язок використовує цікавий метод списків <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">pop()</a>.
+        Від видаляє і повертає значення зі списку з визначеним індексом. Тож ти
+        видаляєш потрібну кількість елементів і вставляєш їх в новий список.
+        І ти включаєш вхідний список як другий вихідний, оскільки він вже без елементів,
+        включених до першого вихідного списку!
         <br />
         <br />
         <pre class="brush: python">
+from typing import Any, Iterable
+
+
 def split_list(items: list[Any]) -> Iterable[list[Any]]:
 
     return [[items.pop(0) for _ in range((len(items)+1)//2)], items]
         </pre>
-        Click "Best solutions" at mission menu and see a lot of other
-        interesting solutions!
+        Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Thanks! I know and understand more now! Everything works fine!
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
     </div>
     <div class="answer">
-        Glad to hear it!
+        Приємно це чути!
     </div>
 </div>
 </body>
