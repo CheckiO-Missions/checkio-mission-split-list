@@ -1,7 +1,13 @@
 <!-- Describe task in general -->
 
 <p>
-   Ви повинні розділити даний масив на два масиви. Якщо він має непарну кількість елементів, то перший масив повинен мати більше елементів. Якщо в ньому немає елементів, слід повернути два порожні масиви.
+   Ви повинні розділити даний {% if is_js %}масив{% else %}список{% endif %} на два
+   {% if is_js %}масиви{% else %}списки{% endif %} всередині {% if is_js %}масиву{% else %}ітерованого об'єкта{% endif %}.
+   Якщо вхідна послідовність  має непарну кількість елементів, то перший з
+   {% if is_js %}масивів{% else %}списків{% endif %} всередині вихідного
+   {% if is_js %}масиву{% else %}ітерованого об'єкта{% endif %} повинен мати більше елементів.
+   Якщо у вхідній послідовності немає елементів, слід повернути два порожні
+   {% if is_js %}масиви{% else %}списки{% endif %} всередині {% if is_js %}масиву{% else %}ітерованого об'єкта{% endif %}.
 </p>
 
 <p style="text-align: center;">
@@ -10,30 +16,19 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Вхідні дані: </strong> {% if interpreter.slug == "js-node" %}Список{% else %}Масив{% endif %}.
+    <strong>Вхідні дані:</strong> {% if is_js %}Масив{% else %}Список{% endif %}.
 </p>
 
 <p>
-    <strong>Вихідні дані: </strong> {% if interpreter.slug == "js-node" %}Список з двох списків{% else %}Масив з двох масивів{% endif %}.
+    <strong>Вихідні дані:</strong> {% if is_js %}Масив з двох масивів{% else %}Ітерований об'єкт з двох списків{% endif %}.
 </p>
 
 
 <!-- Give some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Приклад:</strong>
+        <strong>Приклади:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">splitList([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
-splitList([1, 2, 3]) == [[1, 2], [3]]
-splitList([1, 2, 3, 4, 5]) == [[1, 2, 3], [4, 5]]
-splitList([1]) == [[1], []]
-splitList([]) == [[], []]
-</pre>
-{% else %}
-<pre class="brush: python">split_list([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
-split_list([1, 2, 3]) == [[1, 2], [3]]
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
