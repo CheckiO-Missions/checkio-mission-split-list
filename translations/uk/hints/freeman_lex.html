@@ -1,0 +1,104 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як розв'язувати цю місію.
+    </div>
+    <div class="answer">
+        Знайди правильний індекс і створи два списки використовуючи зрізування. 
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То з чого мені почати?
+    </div>
+    <div class="answer">
+        <p>Як прочитаєш про <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">зрізування</a>,
+        можеш відразу написати вираз <b class="code">return</b>, де <b class="code">ind</b> це індекс елемента у вхідному списку,
+        який буде першим елементом другого списку всередині вихідного ітерованого об'єкта:</p>    
+        <pre class="brush: python">
+return [items[:ind], items[ind:]] # якщо ти повертаєш список        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Зрозуміло, але як знайти цей індекс?
+    </div>
+    <div class="answer">
+        <p>Наприклад, давай візьмемо список із парною кількістю елементів, де для зручності
+        елементи такі ж як індекси (в Python індекси починаються з 0) - <b class="code">[0, 1, 2, 3, 4, 5]</b>.</p>
+        <p>Отже, елемент (і індекс), який тобі потрібен - це 3.
+        Якщо ти візьмеш найближчий менший список із непарною кількістю елементів
+        <b class="code">[0, 1, 2, 3, 4]</b>, то з'ясуєш, що тобі так само потрібен елемент (і індекс) 3.</p>
+        <p>Отже, для списку із непарною кількістю елементів, тобі потрібен той самий індекс,
+        як і для наступного списку із парною кількістю елементів. Такий результат
+        розрахунків буде досягнутий виразом:</p>
+        <pre class="brush: python">
+ind = (len(items) + 1) // 2
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То як має виглядати моє остаточне рішення?
+    </div>
+    <div class="answer">
+        <p>Тобі лише потрібно поєднати попередні підказки разом і обгорнути твій код
+        у вираз функції (підказки типу рекомендовані до використання):</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    ind = (len(items) + 1) // 2
+        
+    return [items[:ind], items[ind:]]        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!
+    </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>З використанням модуля <b class="code">math</b> (округлення вгору з ceiling) ти не потребуєш
+        додавання 1 до довжини списку.</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+import math
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    half = math.ceil(len(items)/2)
+
+    return [items[:half], items[half:]]
+        </pre>
+        <p>Цей розв'язок використовує цікавий метод списків <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">list.pop()</a>.
+        Він видаляє і повертає значення зі списку з визначеним індексом. Тож ти
+        видаляєш потрібну кількість елементів і вставляєш їх в новий список.
+        І ти включаєш вхідний список як другий вихідний, оскільки він вже без елементів,
+        включених до першого вихідного списку!</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    return [[items.pop(0) for _ in range((len(items)+1)//2)], items]
+        </pre>
+        <p><b>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>

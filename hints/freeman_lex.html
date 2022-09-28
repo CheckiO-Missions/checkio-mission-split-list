@@ -1,0 +1,106 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        Find the correct index and create two lists using slicing.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, what should I start from?
+    </div>
+    <div class="answer">
+        <p>After reading about <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">slicing</a>,
+        you may already write the <b class="code">return</b> statement,
+        where <b class="code">ind</b> is the index of element of the input list, which would be the
+        first element of the second list inside output Iterable:</p>
+        <pre class="brush: python">
+return [items[:ind], items[ind:]] # if you return list as well        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I see, but how to find out that index?
+    </div>
+    <div class="answer">
+        <p>For example, let's take a list with even number of elements, where elements
+        are the same as indexes for convenience (indexes start from 0 in Python) - <b class="code">[0, 1, 2, 3, 4, 5]</b>.</p>
+        <p>So, the element (and index) you need is 3. If you take the closest smaller
+        list with odd number of elements <b class="code">[0, 1, 2, 3, 4]</b> you discover, that you need
+        the same element (and index) 3.</p>
+        <p>So, for the list with odd number of elements
+        you need the same index as for the next one with even numbers. This result of
+        calculation would be achieved by such expression:</p>
+        <pre class="brush: python">
+ind = (len(items) + 1) // 2
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>You just need to join previous hints together and wrap you code in
+        function expressions (type hints are recommended):</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    ind = (len(items) + 1) // 2
+        
+    return [items[:ind], items[ind:]]        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>With using <b class="code">math</b> module (round up with ceiling) you don't need adding 1 to
+        the length of sequence.</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+import math
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    half = math.ceil(len(items)/2)
+
+    return [items[:half], items[half:]]
+        </pre>
+        <p>This solution uses interesting list method <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">list.pop()</a>.
+        It removes and return value from a list with specific index. So you remove
+        needed number of elements, insert them into new list. And you include the
+        input list as the second output list since it's already without elements, 
+        included in the first list!</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    return [[items.pop(0) for _ in range((len(items)+1)//2)], items]
+        </pre>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it!
+    </div>
+</div>
+</body>

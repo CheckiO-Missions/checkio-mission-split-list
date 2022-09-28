@@ -11,20 +11,20 @@ Each test is a dict with
 TESTS = {
     "Basics": [
         {
-            "input": [[1,2,3,4,5,6]],
-            "answer": [[1,2,3], [4,5,6]],
+            "input": [[1, 2, 3, 4, 5, 6]],
+            "answer": [[1, 2, 3], [4, 5, 6]],
         },
         {
-            "input": [[1,2,3]],
-            "answer": [[1,2], [3,]],
+            "input": [[1, 2, 3]],
+            "answer": [[1, 2], [3]],
         },
         {
-            "input": [[1,2,3,4,5]],
-            "answer": [[1,2,3], [4,5]],
+            "input": [["banana", "apple", "orange", "cherry", "watermelon"]],
+            "answer": [["banana", "apple", "orange"], ["cherry", "watermelon"]],
         },
         {
-            "input": [[1,]],
-            "answer": [[1,], []],
+            "input": [[1]],
+            "answer": [[1], []],
         },
         {
             "input": [[]],
@@ -33,12 +33,16 @@ TESTS = {
     ],
     "Extra": [
         {
-            "input": [[1,1,1,1,1]],
-            "answer": [[1,1,1], [1,1]],
+            "input": [[1, 1, 1, 1, 1]],
+            "answer": [[1, 1, 1], [1, 1]],
         },
         {
-            "input": [[6,7,8,9]],
-            "answer": [[6,7], [8,9]],
+            "input": [[True, False, False, False]],
+            "answer": [[True, False], [False, False]],
+        },
+        {
+            "input": [[list(), dict(), set(), set(), list()]],
+            "answer": [[list(), dict(), set()], [set(), list()]],
         }
     ]
 }

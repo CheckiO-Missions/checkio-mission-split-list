@@ -1,0 +1,21 @@
+{% comment %}New initial code template{% endcomment %}
+{% block env %}from typing import Any, Iterable{% endblock env %}
+
+{% block start %}
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+    # your code here
+    return [[],[]]
+{% endblock start %}
+
+{% block example %}
+print('Example:')
+print(list(split_list([1, 2, 3, 4, 5, 6]))){% endblock %}
+
+{% block tests %}
+{% for t in tests %}
+assert {% block call %}list(split_list({{t.input|p_args}})){% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}
+{% endblock %}
+
+{% block final %}
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+{% endblock final %}

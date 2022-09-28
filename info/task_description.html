@@ -1,7 +1,11 @@
 <!-- Describe task in general -->
 
 <p>
-    You have to split a given array into two arrays. If it has an odd amount of elements, then the first array should have more elements. If it has no elements, then two empty arrays should be returned.
+    You have to split a given {% if is_js %}Array{% else %}list{% endif %} into
+    two {% if is_js %}Arrays inside an Array{% else %}lists inside an Iterable{% endif %}.
+    If input sequence has an odd amount of elements, then the first {% if is_js %}Array{% else %}list{% endif %}
+    inside result {% if is_js %}Array{% else %}Iterable{% endif %} should have more elements.
+    If input sequence has no elements, then two empty {% if is_js %}Arrays{% else %}lists{% endif %} inside result {% if is_js %}Array{% else %}Iterable{% endif %} should be returned.
 </p>
 
 <p style="text-align: center;">
@@ -10,30 +14,19 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> {% if interpreter.slug == "js-node" %}List{% else %}Array{% endif %}.
+    <strong>Input:</strong> {% if is_js %}An Array{% else %}A list{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> {% if interpreter.slug == "js-node" %}List of two lists{% else %}Array or two arrays{% endif %}.
+    <strong>Output:</strong> {% if is_js %}An Array of two Arrays{% else %}An Iterable of two lists{% endif %}.
 </p>
 
 
 <!-- Give some usage examples -->
 <div class="for_info_only">
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">splitList([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
-splitList([1, 2, 3]) == [[1, 2], [3]]
-splitList([1, 2, 3, 4, 5]) == [[1, 2, 3], [4, 5]]
-splitList([1]) == [[1], []]
-splitList([]) == [[], []]
-</pre>
-{% else %}
-<pre class="brush: python">split_list([1, 2, 3, 4, 5, 6]) == [[1, 2, 3], [4, 5, 6]]
-split_list([1, 2, 3]) == [[1, 2], [3]]
-</pre>
-{% endif %}
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
