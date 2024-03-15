@@ -1,0 +1,106 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        Finden Sie den richtigen Index und erstellen Sie zwei Listen mit Slicing.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Womit soll ich also beginnen?
+    </div>
+    <div class="answer">
+        <p>Nachdem Sie über <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">slicing</a> gelesen haben,
+        können Sie bereits die Anweisung <b class="code">return</b> schreiben,
+        wobei <b class="code">ind</b> der Index des Elements der Eingabeliste ist, das das
+        erste Element der zweiten Liste innerhalb der Ausgabe-Iterable ist:</p>
+        <pre class="brush: python">
+return [items[:ind], items[ind:]] # if you return list as well        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Verstehe, aber wie findet man diesen Index heraus?
+    </div>
+    <div class="answer">
+        <p>Nehmen wir zum Beispiel eine Liste mit einer geraden Anzahl von Elementen, wobei die Elemente
+        der Einfachheit halber die gleichen sind wie die Indizes (Indizes beginnen in Python bei 0) - <b class="code">[0, 1, 2, 3, 4, 5]</b>.</p>
+        <p>Das Element (und der Index), das Sie brauchen, ist also 3. Wenn Sie die nächst kleinere
+        liste mit einer ungeraden Anzahl von Elementen <b class="code">[0, 1, 2, 3, 4]</b>, stellen Sie fest, dass Sie
+        das gleiche Element (und den gleichen Index) 3.</p>
+        <p>Für die Liste mit der ungeraden Anzahl von Elementen
+        benötigen Sie denselben Index wie für die nächste Liste mit geraden Zahlen. Dieses Ergebnis der
+        berechnung würde durch einen solchen Ausdruck erzielt werden:</p>
+        <pre class="brush: python">
+ind = (len(items) + 1) // 2
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>Sie müssen nur die vorherigen Hinweise zusammenfügen und Ihren Code in
+        funktionsausdrücken verpacken (Typ-Hinweise werden empfohlen):</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    ind = (len(items) + 1) // 2
+        
+    return [items[:ind], items[ind:]]        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Zeigen Sie mir mehr Lösungen!<br />
+        denn ich will ein echter Python-Ninjaa sein!
+    </div>
+    <div class="answer">
+        <p>Klar, packen Sie es an!</p>
+        <p>Mit dem Modul <b class="code">math</b> (Aufrunden mit der Obergrenze) müssen Sie nicht 1 zur
+        der Länge der Sequenz zu addieren.</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+import math
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    half = math.ceil(len(items)/2)
+
+    return [items[:half], items[half:]]
+        </pre>
+        <p>Diese Lösung verwendet die interessante Listenmethode <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">list.pop()</a>.
+        Sie entfernt einen Wert aus einer Liste mit einem bestimmten Index und gibt ihn zurück. Sie entfernen also
+        die benötigte Anzahl von Elementen und fügen sie in eine neue Liste ein. Und Sie fügen die
+        eingabeliste als zweite Ausgabeliste ein, da sie bereits ohne Elemente ist, 
+        die in der ersten Liste enthalten sind!</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    return [[items.pop(0) for _ in range((len(items)+1)//2)], items]
+        </pre>
+        <p><b>Click "Best solutions" at mission menu and see a lot of other
+        interesting solutions!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!
+    </div>
+    <div class="answer">
+        Freut mich zu hören!
+    </div>
+</div>
+</body>
