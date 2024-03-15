@@ -1,0 +1,32 @@
+<!-- Describe task in general -->
+
+<p>
+    Sie müssen ein gegebenes {% if is_js %}Array{% else %}Liste{% endif %} in
+    zwei {% if is_js %}Arrays innerhalb eines Arrays{% else %}Listen innerhalb einer Iterable{% endif %} aufteilen.
+    Wenn die Eingabesequenz eine ungerade Anzahl von Elementen hat, dann sollte die erste {% if is_js %}Array{% else %}Liste{% endif %}
+    innerhalb des Ergebnisses {% if is_js %}Array{% else %}Iterable{% endif %} mehr Elemente haben.
+    Wenn die Eingabesequenz keine Elemente hat, dann sollten zwei leere {% if is_js %}Arrays{% else %}lists{% endif %} innerhalb von result {% if is_js %}Array{% else %}Iterable{% endif %} zurückgegeben werden.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Ein Array{% else %}Eine Liste{% endif %}.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> {% if is_js %}Ein Array aus zwei Arrays{% else %}Ein Iterable aus zwei Listen{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
