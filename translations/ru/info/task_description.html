@@ -1,0 +1,32 @@
+<!-- Describe task in general -->
+
+<p>
+    Вам нужно разбить заданный {% if is_js %}Array{% else %}список{% endif %} на
+    два {% if is_js %}Arrays inside an Array{% else %}списка через Iterable{% endif %}.
+    Если входящая последовательность содержит четное количество элементов, то первый {% if is_js %}Array{% else %}список{% endif %}
+    внутри результата {% if is_js %}Array{% else %}Iterable{% endif %} должен содержать больше элементов.
+    Если входящая последовательность не содержит элементов, то следует вернуть два пустых {% if is_js %}Arrays{% else %}списка{% endif %} внутри результата {% if is_js %}Array{% else %}Iterable{% endif %}.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Ввод:</strong> {% if is_js %}An Array{% else %}Список{% endif %}.
+</p>
+
+<p>
+    <strong>Вывод:</strong> {% if is_js %}An Array of two Arrays{% else %}Итерируемый список из двух{% endif %}.
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Примеры:</strong>
+    </p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>

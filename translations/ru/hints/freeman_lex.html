@@ -1,0 +1,102 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я понятия не имею, как начать решать эту задачу.
+    </div>
+    <div class="answer">
+        Найдите правильный индекс и создайте два списка с помощью среза.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Итак, с чего же мне начать?
+    </div>
+    <div class="answer">
+        <p>Прочитав о <a target="_blank" href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">срезах</a>,
+        вы уже можете написать оператор <b class="code">return</b>, где <b class="code">ind</b> -
+        это индекс элемента входного списка, который будет первым элементом второго списка внутри вывода Iterable:</p>
+        <pre class="brush: python">
+return [items[:ind], items[ind:]] # if you return list as well        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Понятно, но как узнать этот индекс?
+    </div>
+    <div class="answer">
+        <p>Например, возьмем список с четным количеством элементов, где элементы для удобства
+        совпадают с индексами (в Python индексы начинаются с 0) - <b class="code">[0, 1, 2, 3, 4, 5]</b>.</p>
+        <p>Значит, нужный вам элемент (и индекс) - 3. Если вы возьмете ближайший меньший список
+        с нечетным числом элементов <b class="code">[0, 1, 2, 3, 4]</b>, то обнаружите, что вам нужен тот же элемент (и индекс) 3.
+        <p>Таким образом, для списка с нечетным числом элементов нужен тот же индекс,
+        что и для следующего списка с четным числом. Этот результат вычислений можно
+        получить с помощью такого выражения:</p>
+        <pre class="brush: python">
+ind = (len(items) + 1) // 2
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Итак, как должно выглядеть мое окончательное решение?
+    </div>
+    <div class="answer">
+        <p>Вам просто нужно объединить предыдущие подсказки и обернуть код в функции (рекомендуется использовать подсказки типов):</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    ind = (len(items) + 1) // 2
+        
+    return [items[:ind], items[ind:]]        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажите мне больше решений!<br />
+        'Потому что я хочу стать настоящим Python Нинндзяяя!
+    </div>
+    <div class="answer">
+        <p>Конечно, бери!</p>
+        <p>При использовании модуля <b class="code">math</b> (округление к большему - <b class="code">ceil()</b>) не нужно будет прибавлять 1 к
+        длине последовательности.</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+import math
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    half = math.ceil(len(items)/2)
+
+    return [items[:half], items[half:]]
+        </pre>
+        <p>Это решение использует интересный метод списка <a target="_blank" href="https://www.w3schools.com/python/ref_list_pop.asp">list.pop()</a>.
+        Он удаляет и возвращает значение из списка с определенным индексом.
+        Таким образом, вы удаляете нужное количество элементов, вставляете их в новый список.
+        И включаете входной список во второй выходной список, поскольку он уже не
+        содержит элементов, включенных в первый список!</p>
+        <pre class="brush: python">
+from typing import Any, Iterable
+
+
+def split_list(items: list[Any]) -> Iterable[list[Any]]:
+
+    return [[items.pop(0) for _ in range((len(items)+1)//2)], items]
+        </pre>
+        <p><b>Нажмите кнопку "Лучшие решения" в меню миссии и посмотрите множество других интересных решений!</b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Спасибо! Теперь я знаю и понимаю больше! Все работает отлично!
+    </div>
+    <div class="answer">
+        Рад это слышать!
+    </div>
+</div>
+</body>
